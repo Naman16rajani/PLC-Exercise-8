@@ -4,14 +4,12 @@ import java.util.Map;
 public class ShoppingCart {
     private Map<Product, Integer> cartItems = new HashMap<>();
     
-    // Add a product to cart
     public void addProduct(Product product, int quantity) {
         if (quantity <= 0) {
             System.out.println("Quantity must be greater than zero");
             return;
         }
         
-        // If product already in cart, update quantity
         if (cartItems.containsKey(product)) {
             int currentQuantity = cartItems.get(product);
             cartItems.put(product, currentQuantity + quantity);
@@ -22,7 +20,6 @@ public class ShoppingCart {
         System.out.println(quantity + " " + product.getProductName() + "(s) added to cart.");
     }
     
-    // Remove a product from cart
     public void removeProduct(Product product) {
         if (cartItems.containsKey(product)) {
             cartItems.remove(product);
@@ -32,7 +29,6 @@ public class ShoppingCart {
         }
     }
     
-    // View cart contents
     public void viewCart() {
         if (cartItems.isEmpty()) {
             System.out.println("Your cart is empty.");
@@ -58,7 +54,6 @@ public class ShoppingCart {
         System.out.println("=========================\n");
     }
     
-    // Calculate total cost of all items
     public double calculateTotal() {
         double total = 0.0;
         for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
@@ -69,7 +64,6 @@ public class ShoppingCart {
         return total;
     }
     
-    // Get total number of items in cart
     public int getTotalItems() {
         int totalItems = 0;
         for (int quantity : cartItems.values()) {
@@ -78,7 +72,6 @@ public class ShoppingCart {
         return totalItems;
     }
     
-    // Checkout process
     public void checkout() {
         if (cartItems.isEmpty()) {
             System.out.println("Cannot checkout - your cart is empty.");
@@ -92,7 +85,6 @@ public class ShoppingCart {
         System.out.println("Thank you for your purchase!");
         System.out.println("===================\n");
         
-        // Clear the cart after checkout
         cartItems.clear();
     }
 }
